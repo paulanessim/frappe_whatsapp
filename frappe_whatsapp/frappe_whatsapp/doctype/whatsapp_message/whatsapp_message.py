@@ -405,8 +405,7 @@ class WhatsAppMessage(Document):
             )
 
             if response.get("success"):
-                self.status = "marked as read"
-                self.save()
+                self.db_set("status", "marked as read")
                 return response.get("success")
 
         except Exception as e:
